@@ -1,0 +1,24 @@
+<form nz-form #formElement [formGroup]="submitForm" (keyup.enter)="formElement.focus()" (ngSubmit)="onSubmit()">
+  <nz-page-header-title>Submit solution</nz-page-header-title>
+
+  <nz-form-item class="submit-content">
+    <nz-form-control nzErrorTip="Please input the problem code!">
+      <input type="text" nz-input formControlName="problemCode" placeholder="Problem code"/>
+    </nz-form-control>
+    <nz-form-control>
+      <nz-select nzPlaceHolder="Select language" formControlName="language">
+        <nz-option nzValue="cpp" nzLabel="C++"></nz-option>
+        <nz-option nzValue="c" nzLabel="C"></nz-option>
+        <nz-option nzValue="java" nzLabel="Java"></nz-option>
+        <nz-option nzValue="python" nzLabel="Python"></nz-option>
+        <nz-option nzValue="pascal" nzLabel="Pascal"></nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+  <ngx-monaco-editor [options]="editorOptions" formControlName="code" class="editor"></ngx-monaco-editor>
+  <nz-form-item>
+    <button nz-button nzType="primary"><span nz-icon nzType="upload" nzTheme="outline"></span>Submit</button>
+  </nz-form-item>
+</form>
+
+

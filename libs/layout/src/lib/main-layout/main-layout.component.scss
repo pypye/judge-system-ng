@@ -1,0 +1,63 @@
+nz-header.main-header {
+  color: white;
+  display: flex;
+}
+
+nz-header.sub-header {
+  background: white;
+  margin: 1rem 2rem;
+  padding: 0;
+}
+
+nz-layout {
+  background: white;
+}
+
+nz-content.no-header {
+  margin: 2rem 0;
+}
+
+nz-content.main-content {
+  background: white;
+  margin: 0 1rem 0 2rem;
+}
+
+nz-content.main-content-no-split {
+  background: white;
+  margin: 0 2rem 0 2rem;
+}
+
+nz-sider {
+  margin: 0 2rem 0 1rem;
+}
+
+header-menu {
+  width: 300px;
+}
+
+.badge-profile {
+  position: absolute;
+  right: 2rem;
+  display: flex;
+  flex-direction: row;
+  column-gap: 0.5rem;
+  align-items: center;
+  padding: 0 1rem;
+
+  &:hover {
+    cursor: pointer;
+    background-color: #1890ff;
+  }
+
+}
+
+.badge-profile > span {
+  font-weight: bold;
+}
+
+li.dd-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  column-gap: 0.25rem;
+}

@@ -1,0 +1,62 @@
+<nz-layout>
+  <nz-header class="main-header">
+
+    <ul nz-menu nzMode="horizontal" nzTheme="dark" class="header-menu">
+      <li nz-menu-item [nzSelected]="isHeaderActive('/')"><a routerLink="/">HOME</a></li>
+      <li nz-menu-item [nzSelected]="isHeaderActive('/problemsets')"><a routerLink="/problemsets">PROBLEMSETS</a></li>
+    </ul>
+    <div class="badge-profile" nz-dropdown [nzDropdownMenu]="menu">
+      <span>{{name}}</span>
+      <nz-avatar nzText="{{name[0]}}"></nz-avatar>
+    </div>
+    <nz-dropdown-menu #menu="nzDropdownMenu">
+      <ul nz-menu nzSelectable>
+        <li class="dd-item" nz-menu-item nzDisabled>
+          <span nz-icon nzType="user" nzTheme="outline"></span>
+          Profile
+        </li>
+        <li class="dd-item" nz-menu-item nzDisabled>
+          <span nz-icon nzType="info-circle" nzTheme="outline"></span>
+          About
+        </li>
+        <li nz-menu-divider></li>
+        <li class="dd-item" nz-menu-item nzDanger (click)="onLogout()">
+          <span nz-icon nzType="logout" nzTheme="outline"></span>
+          Logout
+        </li>
+      </ul>
+    </nz-dropdown-menu>
+  </nz-header>
+  <nz-content [ngClass]="{'no-header': !subHeader}">
+    <nz-header class="sub-header" *ngIf="subHeader">
+      <ul nz-menu nzMode="horizontal">
+        <li nz-menu-item [nzSelected]="isSubHeaderActive('/problemsets')">
+          <a routerLink="/problemsets">
+            <span nz-icon nzType="solution" nzTheme="outline"></span>
+            Problemsets
+          </a>
+        </li>
+        <li nz-menu-item [nzSelected]="isSubHeaderActive('/problemsets/submit')">
+          <a routerLink="/problemsets/submit">
+            <span nz-icon nzType="cloud-upload" nzTheme="outline"></span>
+            Submit
+          </a>
+        </li>
+        <li nz-menu-item [nzSelected]="isSubHeaderActive('/problemsets/history')">
+          <a routerLink="/problemsets/history">
+            <span nz-icon nzType="history" nzTheme="outline"></span>
+            Submission History
+          </a>
+        </li>
+      </ul>
+    </nz-header>
+    <nz-layout>
+      <nz-content [ngClass]="{'main-content': split, 'main-content-no-split': !split}">
+        <ng-content select="[slot=main-content]"></ng-content>
+      </nz-content>
+      <nz-sider nzWidth="25vw" nzTheme="light" class="main-sider" *ngIf="split">
+        <ng-content select="[slot=side-content]"></ng-content>
+      </nz-sider>
+    </nz-layout>
+  </nz-content>
+</nz-layout>

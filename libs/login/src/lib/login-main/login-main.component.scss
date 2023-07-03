@@ -1,0 +1,22 @@
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+}
+
+.login-form {
+  max-width: 300px;
+  border: 1px solid #ccc;
+  border-radius: 0.15rem;
+  padding: 20px;
+}
+
+.login-form > h2 {
+  text-align: center;
+}
+
+.login-form-button {
+  width: 100%;
+}

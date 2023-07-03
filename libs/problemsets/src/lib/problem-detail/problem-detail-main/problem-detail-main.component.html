@@ -1,0 +1,44 @@
+<ng-container *ngIf="data.notFound;else problemShow">
+  <nz-page-header-title>Can't find problem: {{problemCode}}</nz-page-header-title>
+  <button nz-button nzType="primary" (click)="back()">Go Back</button>
+</ng-container>
+<ng-template #problemShow>
+  <nz-page-header-title class="problem-title">Problem: {{problemCode}}
+    - {{data.main.problem_name}}</nz-page-header-title>
+  <nz-descriptions [nzColumn]='2'>
+    <nz-descriptions-item nzTitle="Time limit per test">{{data.main.limit_time}}ms</nz-descriptions-item>
+    <nz-descriptions-item nzTitle="Memory limit per test">{{data.main.limit_memory}}MB</nz-descriptions-item>
+    <nz-descriptions-item nzTitle="File input">{{data.main.file_input}}</nz-descriptions-item>
+    <nz-descriptions-item nzTitle="File output">{{data.main.file_output}}</nz-descriptions-item>
+  </nz-descriptions>
+  <nz-divider></nz-divider>
+  <ng-container *ngIf="data.main.description.statement_main !== ''">
+    <h3>Statement</h3>
+    <markdown katex [katexOptions]="katexOptions">
+      {{data.main.description.statement_main}}
+    </markdown>
+  </ng-container>
+
+  <ng-container *ngIf="data.main.description.example !== []">
+    <h3>Example</h3>
+    <nz-table #table [nzData]="data.main.description.example">
+      <thead>
+      <tr>
+        <th>Input</th>
+        <th>Output</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let example of table.data">
+        <td><pre>{{example["inp"]}}</pre></td>
+        <td><pre>{{example["out"]}}</pre></td>
+      </tr>
+      </tbody>
+    </nz-table>
+  </ng-container>
+
+  <ng-container *ngIf="data.main.description.statement_note !== ''">
+    <h3>Note</h3>
+    <p>{{data.main.description.statement_note}}</p>
+  </ng-container>
+</ng-template>

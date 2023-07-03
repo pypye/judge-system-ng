@@ -17,10 +17,19 @@
         "tsConfig": "apps/judge-system-ng/tsconfig.app.json",
         "assets": [
           "apps/judge-system-ng/src/favicon.ico",
-          "apps/judge-system-ng/src/assets"
+          "apps/judge-system-ng/src/assets",
+          { "glob": "**/*", "input": "node_modules/monaco-editor", "output": "assets/monaco-editor" },
+          { "glob": "**/*", "input": "node_modules/@ant-design/icons-angular/src/inline-svg/", "output": "/assets/" }
         ],
-        "styles": ["apps/judge-system-ng/src/styles.scss"],
-        "scripts": []
+        "styles": [
+          "apps/judge-system-ng/src/styles.scss",
+          "node_modules/katex/dist/katex.min.css"
+        ],
+        "scripts": [
+          "node_modules/marked/marked.min.js",
+          "node_modules/katex/dist/katex.min.js",
+          "node_modules/katex/dist/contrib/auto-render.min.js"
+        ]
       },
       "configurations": {
         "production": {

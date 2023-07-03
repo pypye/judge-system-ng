@@ -1,0 +1,60 @@
+<nz-page-header-title>History</nz-page-header-title>
+<nz-table #table [nzData]="data">
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>When</th>
+    <th>User</th>
+    <th>Problem</th>
+    <th>Language</th>
+    <th>Time</th>
+    <th>Memory</th>
+    <th>Verdict</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let row of table.data;">
+    <td><a (click)="showModal(row['id'])">{{row['id']}}</a></td>
+    <td>{{row['time_submit'] | date: 'HH:MM:ss dd/MM/yyyy'}}</td>
+    <td>{{row['username']}}</td>
+    <td>{{row['problem_code']}}</td>
+    <td>{{row['language']}}</td>
+    <td>{{row['usage_time']}}ms</td>
+    <td>{{row['usage_memory']}}MB</td>
+    <td class="verdict" [innerHTML]="row['verdict'] | verdict"></td>
+  </tr>
+  </tbody>
+</nz-table>
+
+<nz-modal [(nzVisible)]="modalVisible" nzTitle="Submission ID: {{currentPreviewId}}" (nzOnCancel)="handleCancel()"
+          [nzFooter]="modalFooter" nzWidth="60vw">
+  <ng-container *nzModalContent>
+    <ngx-monaco-editor [options]="editorOptions" [(ngModel)]="currentPreviewCode"
+                       style="height: 35vh"></ngx-monaco-editor>
+    <h3>Judge log</h3>
+    <nz-table #table [nzData]="currentPreviewLog" [nzScroll]="{ y: '15vh' }">
+      <thead>
+      <tr>
+        <th>Test name</th>
+        <th>Time</th>
+        <th>Memory</th>
+        <th>Verdict</th>
+        <th>Score</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let row of table.data;">
+        <td>{{row['test_name']}}</td>
+        <td>{{row['time']}}ms</td>
+        <td>{{row['memory']}}MB</td>
+        <td [innerHTML]="row['exit_code'] | verdictFrExc | verdict"></td>
+        <td>{{row['point']}}</td>
+      </tr>
+      </tbody>
+    </nz-table>
+  </ng-container>
+</nz-modal>
+
+<ng-template #modalFooter>
+
+</ng-template>

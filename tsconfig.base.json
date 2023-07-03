@@ -14,7 +14,16 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@judge-system-ng/api": ["libs/api/src/index.ts"],
+      "@judge-system-ng/guards": ["libs/guards/src/index.ts"],
+      "@judge-system-ng/home": ["libs/home/src/index.ts"],
+      "@judge-system-ng/layout": ["libs/layout/src/index.ts"],
+      "@judge-system-ng/login": ["libs/login/src/index.ts"],
+      "@judge-system-ng/module": ["libs/module/src/index.ts"],
+      "@judge-system-ng/pipe": ["libs/pipe/src/index.ts"],
+      "@judge-system-ng/problemsets": ["libs/problemsets/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

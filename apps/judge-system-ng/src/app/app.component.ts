@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { NxWelcomeComponent } from './nx-welcome.component';
-
+import {Component} from '@angular/core';
+import {RouterModule} from '@angular/router';
+import {LayoutModule} from "@judge-system-ng/layout";
+import {HttpClientModule} from "@angular/common/http";
 @Component({
   standalone: true,
-  imports: [NxWelcomeComponent, RouterModule],
+  imports: [RouterModule, LayoutModule, HttpClientModule],
   selector: 'judge-system-ng-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],

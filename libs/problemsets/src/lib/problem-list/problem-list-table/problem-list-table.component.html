@@ -1,0 +1,17 @@
+<nz-page-header-title>Problem list</nz-page-header-title>
+<nz-table #table [nzData]="data">
+  <thead>
+  <tr>
+    <th>#</th>
+    <th>Problem code</th>
+    <th>Problem name</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let row of table.data; let i = index">
+    <td>{{i + 1}}</td>
+    <td><a [routerLink]="'view/' + row['problem_code']">{{row['problem_code']}}</a></td>
+    <td>{{row['problem_name']}}</td>
+  </tr>
+  </tbody>
+</nz-table>

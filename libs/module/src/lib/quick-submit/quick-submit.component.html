@@ -1,0 +1,20 @@
+<div class="quick-submit-container">
+  <nz-page-header-title>Quick Submit</nz-page-header-title>
+  <nz-upload nzType="drag" nzListType="picture" [(nzFileList)]="fileList" [nzBeforeUpload]="beforeUpload">
+    <p class="ant-upload-drag-icon">
+      <span nz-icon nzType="inbox"></span>
+    </p>
+    <p>Click or drag file to this area to upload</p>
+    <p class="ant-upload-hint">
+      Filename format: [problem code].[extension]
+    </p>
+    <p class="ant-upload-hint">
+      Maximum file size: 1MB
+    </p>
+  </nz-upload>
+
+  <button nz-button nzType="primary" (click)="onUpload()" [disabled]="fileList.length === 0">
+    <span nz-icon nzType="upload" nzTheme="outline"></span>
+    {{uploading ? 'Submitting' : 'Submit' }}
+  </button>
+</div>
